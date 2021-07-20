@@ -1,0 +1,152 @@
+<!--To Creat a chating box with two people with the help of Pure js,css,HTML-->
+<html>
+    <head>
+        <style>
+            body
+            {
+                background-image: linear-gradient(orange,white,green);
+            }
+            .chat{
+                text-align: center;
+            }
+            .chat1,.chat2{
+                display: inline-block;
+                border: 7px solid black;
+                outline: 3px solid aqua;
+                height: 93%;
+                width: 30%;
+                margin: 10px;
+                background-image: linear-gradient(red,aqua,black,pink,red,blue,yellow,white,pink,orange,black,green);
+            }
+            .showchat1,.showchat2{
+
+                width: 90%;
+                height: 85%;
+                border: 4px solid white;
+                margin: 4%;
+                background-image: linear-gradient(yellow,aqua,orange);
+                border-radius: 5%;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: 100% 100%;
+                overflow: auto;                
+            }
+            .showchat1{
+                background-image: linear-gradient(white,aqua,blue)
+            }
+            
+            #txt1,#txt2
+            {
+                width: 80%;
+                height: 6%;
+                border-radius: 30px;
+                outline: none;
+                border: 1px solid;
+                font-size: 20px;
+                padding: 3px;
+            }
+            #btn1,#btn2{
+                border: 2px solid;
+                font-weight: bold;
+                border-radius: 45%;
+                font-size: 120%;
+                outline: none;
+                cursor: pointer;
+                height: 6%;
+                width: 15%;
+            }
+            .msg1,.msg2{
+                font-size: 20px;
+                font-weight: bold;
+                border-radius: 6px;
+                padding: 3px;
+                margin: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="chat">
+            <div class="chat1">
+                <div class="showchat1"></div>
+                <input type="text" id="txt1" placeholder="Type a message">
+                <input type="button" value="Send" id="btn1" onclick="Send_msg1()">
+            </div>
+            <div class="chat2">
+                <div class="showchat2"></div>
+                <input type="text" id="txt2" placeholder="Type a message">
+                <input type="button" value="Send" id="btn2" onclick="Send_msg2()">
+            </div>
+        </div>
+        <script>
+            let chat = document.querySelector('.chat');
+            let chat1 = document.querySelector('.chat1');
+            let showchat1 = document.querySelector('.showchat1');
+            let showchat2 = document.querySelector('.showchat2');
+            let txt1 = document.querySelector('#txt1');
+            let txt2 = document.querySelector('#txt2');
+            let btn1 = document.querySelector('#btn1');
+            let btn2 = document.querySelector('#btn2');
+            let chat2 = document.querySelector('.chat2');
+            
+            function Send_msg1()
+            {
+                (txt1.value).trim();
+                if((txt1.value)!="")
+                {   
+                    let msg1=document.createElement('p'); // Now Creating a paragraph
+                    msg1.setAttribute('class','msg1');    // Adding class and its class name.  
+                    showchat1.appendChild(msg1);          // class name msg1 is child of showchat1.  
+
+                    let msg2=document.createElement('p'); // Now Creating a paragraph
+                    msg2.setAttribute('class','msg2');    // Adding class and its class name.    
+                    showchat2.appendChild(msg2);          // class name msg1 is child of showchat1.                  
+
+                    msg1.innerText=txt1.value;
+                    msg1.style.textAlign="right";
+                    msg1.style.backgroundColor="rgb(32, 83, 32)";
+                    msg1.style.color="white";
+                    //msg1.style.float="right";
+                    
+                    msg2.innerText=txt1.value;
+                    msg2.style.textAlign="left";
+                    msg2.style.backgroundColor="rgb(0, 0, 0)";
+                    msg2.style.color="white";
+                    //msg2.style.float="left";
+                    var x=msg1.getBoundingClientRect();
+                    console.log(x);
+
+                    txt1.value="";   // Initialize Null after the send massage.
+                }
+            }
+
+            function Send_msg2()
+            {
+                (txt2.value).trim();
+                if((txt2.value)!="")
+                {
+                    let msg1=document.createElement('p'); // Now Creating a paragraph
+                    msg1.setAttribute('class','msg1');    // Adding class and its class name.  
+                    showchat1.appendChild(msg1);          // class name msg1 is child of showchat1.  
+
+                    let msg2=document.createElement('p'); // Now Creating a paragraph
+                    msg2.setAttribute('class','msg2');    // Adding class and its class name.    
+                    showchat2.appendChild(msg2);          // class name msg1 is child of showchat1.                  
+
+                    msg2.innerText=txt2.value;
+                    msg2.style.textAlign="right";
+                    msg2.style.backgroundColor="rgb(32, 83, 32)";
+                    msg2.style.color="white";
+                    //msg2.style.float="right";
+                    
+                    msg1.innerText=txt2.value;
+                    msg1.style.textAlign="left";
+                    msg1.style.backgroundColor="rgb(0, 0, 0)";
+                    msg1.style.color="white";
+                    //msg1.style.float="left";
+
+                    txt2.value="";   // Initialize Null after the send massage.
+                }
+            }
+        </script>
+    </body>
+</html>
